@@ -487,7 +487,7 @@ const Dashboard = () => {
 
             <div className="qr-wrapper">
               <QRCode
-                value={`${BASE_URL}/api/url/${selectedUrl.shortCode}`}
+                value={`${BASE_URL}/${selectedUrl.shortCode}`}
                 size={180}
                 bgColor="#ffffff"
                 fgColor="#111827"
