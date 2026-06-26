@@ -8,9 +8,8 @@ import urlRoutes from "./routes/urlRoutes.js";
 
 dotenv.config();
 
-connectDB();
-
 const app = express();
+connectDB();
 
 // Middlewares
 app.use(cors());
@@ -24,8 +23,9 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== "production") {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
