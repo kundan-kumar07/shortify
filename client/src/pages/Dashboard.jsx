@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   const copyToClipboard = async (shortCode) => {
     try {
-      const shortUrl = `http://localhost:5000/api/url/${shortCode}`;
+      const shortUrl = `${BASE_URL}/api/url/${shortCode}`;
       await navigator.clipboard.writeText(shortUrl);
       toast.success("Copied to clipboard!");
     } catch (error) {
@@ -25,7 +25,7 @@ const Dashboard = () => {
   const fetchUrls = async () => {
     try {
       const token = await getToken();
-      const response = await axios.get("http://localhost:5000/api/url/my-urls", {
+      const response = await axios.get(`${BASE_URL}/api/url/my-urls`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUrls(response.data.data);
@@ -39,7 +39,7 @@ const Dashboard = () => {
     try {
       setDeletingId(id);
       const token = await getToken();
-      await axios.delete(`http://localhost:5000/api/url/${id}`, {
+      await axios.delete(`${BASE_URL}/api/url/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUrls((prev) => prev.filter((url) => url._id !== id));
@@ -418,7 +418,7 @@ const Dashboard = () => {
                         </td>
                         <td>
                           <a
-                            href={`http://localhost:5000/api/url/${url.shortCode}`}
+                            href={`${BASE_URL}/api/url/${url.shortCode}`}
                             target="_blank"
                             rel="noreferrer"
                             className="short-link"
@@ -482,12 +482,12 @@ const Dashboard = () => {
           <div className="modal-box">
             <p className="modal-title">QR Code</p>
             <p className="modal-url-label">
-              localhost:5000/api/url/{selectedUrl.shortCode}
+              {BASE_URL}/api/url/{selectedUrl.shortCode}
             </p>
 
             <div className="qr-wrapper">
               <QRCode
-                value={`http://localhost:5000/api/url/${selectedUrl.shortCode}`}
+                value={`${BASE_URL}/api/url/${selectedUrl.shortCode}`}
                 size={180}
                 bgColor="#ffffff"
                 fgColor="#111827"
