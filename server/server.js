@@ -19,7 +19,7 @@ app.use(clerkMiddleware());
 
 // Routes
 app.use("/api/url", urlRoutes);
-router.get("/:shortCode",redirectUrl);
+app.get("/:shortCode",redirectUrl);
 
 app.get("/", (req, res) => {
   res.send("Hello World");
