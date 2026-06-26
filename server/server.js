@@ -5,6 +5,7 @@ import { clerkMiddleware } from "@clerk/express";
 
 import connectDB from "./config/db.js";
 import urlRoutes from "./routes/urlRoutes.js";
+import { redirectUrl } from "./controllers/urlController.js";
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.use(clerkMiddleware());
 
 // Routes
 app.use("/api/url", urlRoutes);
+router.get("/:shortCode",redirectUrl);
 
 app.get("/", (req, res) => {
   res.send("Hello World");

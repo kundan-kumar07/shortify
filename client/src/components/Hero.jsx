@@ -24,7 +24,7 @@ const Hero = () => {
         { headers: { Authorization: `Bearer ${token}` } }
       );
       toast.success(response.data.message);
-      setShortUrl(`${BASE_URL}/api/url/${response.data.data.shortCode}`);
+      setShortUrl(`${BASE_URL}/${response.data.data.shortCode}`);
       setUrl("");
     } catch (error) {
       console.log(error);

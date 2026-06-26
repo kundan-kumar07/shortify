@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   const copyToClipboard = async (shortCode) => {
     try {
-      const shortUrl = `${BASE_URL}/api/url/${shortCode}`;
+      const shortUrl = `${BASE_URL}/${shortCode}`;
       await navigator.clipboard.writeText(shortUrl);
       toast.success("Copied to clipboard!");
     } catch (error) {
@@ -482,7 +482,7 @@ const Dashboard = () => {
           <div className="modal-box">
             <p className="modal-title">QR Code</p>
             <p className="modal-url-label">
-              {BASE_URL}/api/url/{selectedUrl.shortCode}
+              {BASE_URL}/{selectedUrl.shortCode}
             </p>
 
             <div className="qr-wrapper">
